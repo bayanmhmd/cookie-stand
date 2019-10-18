@@ -32,8 +32,8 @@ ShopOfCookies.prototype.render = function() {
 };
 ShopOfCookies.prototype.numOfCustomersPerHour = function() {
   for (var i = 0; i < hours.length; i++) {
-    var singleHourCustomers = Math.floor(Math.random() * (this.Max - this.Min + 1)) + this.Min;
-    this.averageCustomersPerHour.push(singleHourCustomers);
+    var hourCustmor = Math.floor(Math.random() * (this.Max - this.Min + 1)) + this.Min;
+    this.averageCustomersPerHour.push(hourCustmor);
   }
 };
 ShopOfCookies.prototype.cookiesPerCustomer = function() {
@@ -43,7 +43,7 @@ ShopOfCookies.prototype.cookiesPerCustomer = function() {
     this.totalCookiesPerDay += singleHourCookies;
   }
 };
-//Table creation functions
+/////////////////////////
 function headRow() { 
   var tableRow = document.createElement('tr');
   var thElement = document.createElement('th');
