@@ -2,8 +2,8 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 
-function ShopOfCookies(location, min, max, avg) {
-    this.location = location;
+function ShopOfCookies(locationName, min, max, avg) {
+    this.locationName = locationName;
     this.min = min;
     this.max = max;
     this.avg = avg;
@@ -20,7 +20,7 @@ var tokyo = new ShopOfCookies('tokyo', 3, 24, 1.2);
 var dubai = new ShopOfCookies('dubai', 11, 38, 3.7);
 var paris = new ShopOfCookies('paris', 20, 38, 2.3);
 var lima = new ShopOfCookies('lima', 2, 16, 4.6);
-var locationsnames = [seattle, tokyo, dubai, paris, lima];
+var locations = [seattle, tokyo, dubai, paris, lima];
 
 ShopOfCookies.prototype.randomInRange = function () {
     var range = this.max - this.min;
@@ -41,9 +41,9 @@ ShopOfCookies.prototype.numberofcookies = function () {
 
 
 
-for (var i = 0; i < locationsnames.length; i++) {
-    console.log('totaldata', locationsnames[i]);
-    locationsnames[i].numberofcookies();
+for (var i = 0; i < locations.length; i++) {
+    console.log('totaldata', locations[i]);
+    locations[i].numberofcookies();
 }
 
 
@@ -100,26 +100,26 @@ HeadRow(cookietable);
 
 // }
 ShopOfCookies.prototype.renderDataRows = function () {
-    var dataRow = document.createElement('tr');
-    cookietable.appendChild(dataRow);
+    var dRow = document.createElement('tr');
+    cookietable.appendChild(dRow);
 
-    var locationNames = document.createElement('th');
-    dataRow.appendChild(locationNames);
-    locationNames.textContent = this.locationNames;
+    var locationN = document.createElement('th');
+    dRow.appendChild(locationN);
+    locationN.textContent = this.locationName;
 
     for (var i = 0; i < this.cookiesperhour.length; i++) {
 
         var cookiesperhour = document.createElement('td');
-        dataRow.appendChild(cookiesperhour);
+        dRow.appendChild(cookiesperhour);
         cookiesperhour.textContent = this.cookiesperhour[i];
     }
     var totalcookies = document.createElement('td');
-    dataRow.appendChild(totalcookies);
+    dRow.appendChild(totalcookies);
     totalcookies.textContent = this.total;
 };
-for (var i = 0; i < locationsnames.length; i++) {
+for (var i = 0; i < locations.length; i++) {
 
-    this.locationsnames[i].renderDataRows();
+    locations[i].renderDataRows();
 
 }
 
