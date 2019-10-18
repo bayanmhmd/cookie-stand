@@ -43,7 +43,7 @@ ShopOfCookies.prototype.cookiesPerCustomer = function() {
     this.totalCookiesPerDay += singleHourCookies;
   }
 };
-/////////////////////////
+///////////////////////// 
 function headRow() { 
   var tableRow = document.createElement('tr');
   var thElement = document.createElement('th');
@@ -116,7 +116,7 @@ function dataInput(event) {
   doesStoreExist(locations, name);
   console.log(doesStoreExist(locations, name));
   if (storeExist === true) {
-    console.log('did find name');
+    
     locations[index].Min = parseInt(Min);
     locations[index].Max = parseInt(Max);
     locations[index].Avg = parseFloat(Avg);
