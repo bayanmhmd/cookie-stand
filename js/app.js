@@ -3,11 +3,11 @@ var hours = ['6:00 am', '7:00 am', '8:00 am', '9:00 am', '10:00 am', '11:00 am',
 var locations = [];
 var salmonTable = document.getElementById('salmonTable');
 var salesInput = document.getElementById('salesInput');
-function ShopOfCookies(name, Min, Max, Avg) {
+function ShopOfCookies(name, min, max, avg) {
   this.name = name;
-  this.Min = Min;
-  this.Max = Max;
-  this.Avg = Avg;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
   this.averageCustomersPerHour = [];
   this.averageCookiesPerHour = [];
   this.totalCookiesPerDay = 0;
@@ -32,13 +32,13 @@ ShopOfCookies.prototype.render = function() {
 };
 ShopOfCookies.prototype.numOfCustomersPerHour = function() {
   for (var i = 0; i < hours.length; i++) {
-    var hourCustmor = Math.floor(Math.random() * (this.Max - this.Min + 1)) + this.Min;
+    var hourCustmor = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
     this.averageCustomersPerHour.push(hourCustmor);
   }
 };
 ShopOfCookies.prototype.cookiesPerCustomer = function() {
   for (var i = 0; i < hours.length; i++) {
-    var singleHourCookies = Math.ceil(this.averageCustomersPerHour[i] * this.Avg);
+    var singleHourCookies = Math.ceil(this.averageCustomersPerHour[i] * this.avg);
     this.averageCookiesPerHour.push(singleHourCookies);
     this.totalCookiesPerDay += singleHourCookies;
   }
@@ -94,13 +94,13 @@ new ShopOfCookies('Lima', 2, 16, 4.6);
 function dataInput(event) {
   event.preventDefault();
   console.log('Submit button was clicked');
-  if (!event.target.name.value || !event.target.Min.value || !event.target.Max.value || !event.target.Avg.value) {
+  if (!event.target.name.value || !event.target.min.value || !event.target.max.value || !event.target.avg.value) {
     return alert('Fields cannot be empty!');
   }
   var name = event.target.name.value;
-  var Min = parseInt(event.target.Min.value);
-  var Max = parseInt(event.target.Max.value);
-  var Avg = parseFloat(event.target.Avg.value);
+  var min = parseInt(event.target.min.value);
+  var max = parseInt(event.target.max.value);
+  var avg = parseFloat(event.target.avg.value);
     salmonTable.textContent = null;
   var storeExist = doesStoreExist(locations, name);
   var index;
@@ -117,9 +117,9 @@ function dataInput(event) {
   console.log(doesStoreExist(locations, name));
   if (storeExist === true) {
     
-    locations[index].Min = parseInt(Min);
-    locations[index].Max = parseInt(Max);
-    locations[index].Avg = parseFloat(Avg);
+    locations[index].min = parseInt(min);
+    locations[index].max = parseInt(max);
+    locations[index].avg = parseFloat(avg);
     locations[index].averageCustomersPerHour = [];
     locations[index].averageCookiesPerHour = [];
     locations[index].totalCookiesPerDay = 0;
@@ -127,7 +127,7 @@ function dataInput(event) {
     locations[index].cookiesPerCustomer();
   }
   if (storeExist === false) {
-    var newStore = new ShopOfCookies(name, Min, Max, Avg);
+    var newStore = new ShopOfCookies(name, min, max, avg);
   }
   headRow();
   renderAllStores();
