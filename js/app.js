@@ -94,7 +94,7 @@ new ShopOfCookies('Lima', 2, 16, 4.6);
 function dataInput(event) {
   event.preventDefault();
   console.log('Submit button was clicked');
-  if (!event.target.name.value || !event.target.min.value || !event.target.max.value || !event.target.avg.value) {
+  if (!event.target.name.value || !event.target.min.value || !event.target.max.value || !event.target.a+vg.value) {
     return alert('Fields cannot be empty!');
   }
   var name = event.target.name.value;
